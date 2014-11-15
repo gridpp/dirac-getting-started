@@ -156,6 +156,7 @@ class KlusterTest(unittest.TestCase):
         # Is it an edge cluster?
         self.assertEqual(ks[10].isEdgeCluster(), False)
 
+        #print "JSON entry:", ks[10].getKlusterPropertiesJson()
 
         # The last - and small - cluster.
 
@@ -206,6 +207,7 @@ class KlusterTest(unittest.TestCase):
 
         # Is it an edge cluster?
         self.assertEqual(ks[33].isEdgeCluster(), False)
+
 
 
 if __name__ == "__main__":

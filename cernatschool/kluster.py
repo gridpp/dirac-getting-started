@@ -360,6 +360,39 @@ class Kluster:
         lg.debug("* Number of edge pixels    = %5d" % (self.__n_edge))
         lg.debug("*")
 
+    def getKlusterPropertiesJson(self):
+
+        m, c, sumR = self.getLineOfBestFitValues()
+
+        p = {\
+            "size"          : self.getNumberOfPixels(), \
+            "xmin"          : self.getXMin(),           \
+            "xmax"          : self.getXMax(),           \
+            "ymin"          : self.getYMin(),           \
+            "ymax"          : self.getYMax(),           \
+            "width"         : self.getWidth(),          \
+            "height"        : self.getHeight(),         \
+            "x_uw"          : self.getXUW(),            \
+            "y_uw"          : self.getYUW(),            \
+            "radius_uw"     : self.getRadiusUW(),       \
+            "density_uw"    : self.getDensityUW(),      \
+            "totalcounts"   : self.getTotalCounts(),    \
+            "maxcounts"     : self.getMaxCountValue(),  \
+            "lin_m"         : m,                        \
+            "lin_c"         : c,                        \
+            "lin_sumofres"  : sumR,                     \
+            "lin_linearity" : self.getLinearity(),      \
+            #"n_edgepixels"  :, \
+            #"edgefrac"      :, \
+            #"innerfrac"     :, \
+            #"ismc"          : self.isMC()\
+            #"isedgekluster" : , \
+            #"totalenergy"   :, \
+            #"maxenergy"     :, \
+            #"frameid"       :\
+            }
+        return p
+
 
 class KlusterFinder:
     """
@@ -556,84 +589,3 @@ class KlusterFinder:
 
     def getNumberOfTetrapixelGammas(self):
         return self.__n_g4
-
-
-#class KlustersModel(QSqlRelationalTableModel, Table):
-#    """
-#    """
-#
-#    def __init__(self, database):
-#        """
-#        Constructor.
-#        """
-#
-#        lg.debug(" Instantiating a KlustersModel object.")
-#        lg.debug("")
-#
-#        # Initialise the base classes.
-#        QSqlRelationalTableModel.__init__(self, db=database)
-#
-#        Table.__init__(self, "Klusters", database)
-#
-#    def addColumns(self):
-#
-#        # Add the columns.
-#
-#        self.cols[ 0] = Column("id", 0, primarykey=True, autoincr=True, unique=True, notnull=True)
-#        self.cols[ 1] = Column("pixels", 3, notnull=True)
-#        self.cols[ 2] = Column("size", 0, notnull=True)
-#        self.cols[ 3] = Column("xmin", 0, notnull=True)
-#        self.cols[ 4] = Column("xmax", 0, notnull=True)
-#        self.cols[ 5] = Column("ymin", 0, notnull=True)
-#        self.cols[ 6] = Column("ymax", 0, notnull=True)
-#        self.cols[ 7] = Column("width", 0, notnull=True)
-#        self.cols[ 8] = Column("height", 0, notnull=True)
-#        self.cols[ 9] = Column("x_uw", 1, notnull=True)
-#        self.cols[10] = Column("y_uw", 1, notnull=True)
-#        self.cols[11] = Column("radius_uw", 1, notnull=True)
-#        self.cols[12] = Column("density_uw", 1, notnull=True)
-#        self.cols[13] = Column("totalcounts", 0, notnull=True)
-#        self.cols[14] = Column("maxcounts", 0, notnull=True)
-#        self.cols[15] = Column("lin_m", 1, notnull=True)
-#        self.cols[16] = Column("lin_c", 1, notnull=True)
-#        self.cols[17] = Column("lin_sumofres", 1, notnull=True)
-#        self.cols[18] = Column("lin_linearity", 1, notnull=True)
-#        self.cols[19] = Column("n_edgepixels", 0, notnull=True)
-#        self.cols[20] = Column("edgefrac", 1, notnull=True)
-#        self.cols[21] = Column("innerfrac", 1, notnull=True)
-#        self.cols[22] = Column("ismc", 0, notnull=True)
-#        self.cols[23] = Column("isedgekluster", 0, notnull=True)
-#        self.cols[24] = Column("totalenergy", 1, notnull=True)
-#        self.cols[25] = Column("maxenergy", 1, notnull=True)
-#        self.cols[26] = Column("frameid", 0, notnull=True, foreignkey="Frames")
-#
-#
-#    def setHeaders(self):
-#
-#        self.setHeaderData(0, Qt.Horizontal, QVariant(ID_HEADER))
-#        self.setHeaderData(1, Qt.Horizontal, QVariant(KLUSTER_PIXELS_HEADER))
-#        self.setHeaderData(2, Qt.Horizontal, QVariant(KLUSTER_SIZE_HEADER))
-#        self.setHeaderData(3, Qt.Horizontal, QVariant(X_MIN_HEADER))
-#        self.setHeaderData(4, Qt.Horizontal, QVariant(X_MAX_HEADER))
-#        self.setHeaderData(5, Qt.Horizontal, QVariant(Y_MIN_HEADER))
-#        self.setHeaderData(6, Qt.Horizontal, QVariant(Y_MAX_HEADER))
-#        self.setHeaderData(7, Qt.Horizontal, QVariant(KLUSTER_WIDTH_HEADER))
-#        self.setHeaderData(8, Qt.Horizontal, QVariant(KLUSTER_HEIGHT_HEADER))
-#        self.setHeaderData(9, Qt.Horizontal, QVariant(KLUSTER_X_UW_HEADER))
-#        self.setHeaderData(10, Qt.Horizontal, QVariant(KLUSTER_Y_UW_HEADER))
-#        self.setHeaderData(11, Qt.Horizontal, QVariant(KLUSTER_RADIUS_UW_HEADER))
-#        self.setHeaderData(12, Qt.Horizontal, QVariant(KLUSTER_DENSITY_UW_HEADER))
-#        self.setHeaderData(13, Qt.Horizontal, QVariant(KLUSTER_TOTAL_COUNTS_HEADER))
-#        self.setHeaderData(14, Qt.Horizontal, QVariant(KLUSTER_MAX_COUNT_HEADER))
-#        self.setHeaderData(15, Qt.Horizontal, QVariant(KLUSTER_LIN_M_HEADER))
-#        self.setHeaderData(16, Qt.Horizontal, QVariant(KLUSTER_LIN_C_HEADER))
-#        self.setHeaderData(17, Qt.Horizontal, QVariant(KLUSTER_LIN_SUMOFR_HEADER))
-#        self.setHeaderData(18, Qt.Horizontal, QVariant(KLUSTER_LINEARITY_HEADER))
-#        self.setHeaderData(19, Qt.Horizontal, QVariant(KLUSTER_N_EDGE_HEADER))
-#        self.setHeaderData(20, Qt.Horizontal, QVariant(KLUSTER_OUTERFRAC_HEADER))
-#        self.setHeaderData(21, Qt.Horizontal, QVariant(KLUSTER_INNERFRAC_HEADER))
-#        self.setHeaderData(22, Qt.Horizontal, QVariant(IS_MC_HEADER))
-#        self.setHeaderData(23, Qt.Horizontal, QVariant(IS_EDGE_KLUSTER_HEADER))
-#        self.setHeaderData(24, Qt.Horizontal, QVariant(KLUSTER_TOTAL_ENERGY_HEADER))
-#        self.setHeaderData(25, Qt.Horizontal, QVariant(KLUSTER_MAX_ENERGY_HEADER))
-#        self.setHeaderData(26, Qt.Horizontal, QVariant(FRAME_ID_HEADER))

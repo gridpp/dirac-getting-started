@@ -1,2 +1,5 @@
 # Logging
 log_*
+
+# Temporary files
+*tmp*
