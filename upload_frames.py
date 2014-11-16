@@ -92,7 +92,7 @@ if __name__ == "__main__":
         level=lg.INFO
 
     # Configure the logging.
-    lg.basicConfig(filename='log_upload.log', filemode='w', level=level)
+    lg.basicConfig(filename='log_upload_frames.log', filemode='w', level=level)
 
     print("*")
     print("* Input path          : '%s'" % (datapath))
@@ -200,9 +200,9 @@ if __name__ == "__main__":
     ## The DIRAC instance.
     dirac = Dirac()
 
-    # Submit the job and print the result.
-    result = dirac.submit(j)
-    print 'Submission result: ', result
+#    # Submit the job and print the result.
+#    result = dirac.submit(j)
+#    print 'Submission result: ', result
 
     # Delete the (temporary) data files.
     for fn in file_dict.keys():
