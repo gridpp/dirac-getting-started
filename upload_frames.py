@@ -124,7 +124,7 @@ if __name__ == "__main__":
     for f in frames:
 
         ## The filename for the data frame, based on frame information.
-        fn = "%s_%d-%6d" % (f.getChipId(), f.getStartTimeSec(), f.getStartTimeSubSec())
+        fn = "%s_%d-%06d" % (f.getChipId(), f.getStartTimeSec(), f.getStartTimeSubSec())
 
         # Create a temporary file for the frame data.
         with open(fn+".txt", "w") as of:
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     print("*")
     print("* Uploading the following files:")
     for fn in file_dict.keys():
-        print("*-> '%s.txt'" % (fn))
+        print("*-> '%s'" % (fn))
     print("*")
 
     ## The DIRAC job to submit.
@@ -200,9 +200,9 @@ if __name__ == "__main__":
     ## The DIRAC instance.
     dirac = Dirac()
 
-#    # Submit the job and print the result.
-#    result = dirac.submit(j)
-#    print 'Submission result: ', result
+    # Submit the job and print the result.
+    result = dirac.submit(j)
+    print 'Submission result: ', result
 
     # Delete the (temporary) data files.
     for fn in file_dict.keys():

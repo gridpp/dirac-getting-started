@@ -143,31 +143,30 @@ if __name__ == "__main__":
     kluster_file_names = []
 
     for fn in retrieved_frames:
-        print("* Frame: '%s'." % (fn))
+        #print("* Frame: '%s'." % (fn))
         # Ah - LFN: needs to be removed from the start...
         filemetadata = fc.getFileUserMetadata(fn[4:])
         #print filemetadata
         frameid = str(filemetadata['Value']['frameid'])
         n_kluster = int(filemetadata['Value']['n_kluster'])
-        print("*--> Frame ID           : '%s'" % (frameid))
-        print("*--> Number of clusters = %d" % (n_kluster))
-        print("*")
+        #print("*--> Frame ID           : '%s'" % (frameid))
+        #print("*--> Number of clusters = %d" % (n_kluster))
+        #print("*")
         for i in range(n_kluster):
             kn = "%s_k%05d.png" % (frameid, i)
             kluster_file_names.append(kn)
     print("*")
 
-    lg.info(" * Clusters to be downloaded:")
-    for kn in kluster_file_names:
-        lg.info(" *--> '%s'" % (kn))
-
+    #lg.info(" * Clusters to be downloaded:")
+    #for kn in kluster_file_names:
+    #    lg.info(" *--> '%s'" % (kn))
 
     ## The input sandbox files.
     inputfiles = ['run.sh']
 
     # Update the user with the frames found.
     for fn in retrieved_frames:
-        print("* Found: '%s'." % (fn))
+        #print("* Found: '%s'." % (fn))
         inputfiles.append(fn)
     print("*")
 
