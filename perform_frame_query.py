@@ -7,6 +7,7 @@ DIRAC and GridPP: perform a query on the CERN@school frames.
 
 """
 
+#...for the operating system stuff.
 import os
 
 #...for parsing the arguments.
@@ -94,25 +95,29 @@ if __name__ == "__main__":
     print("*")
     print "* Metadata query:", meta_dict
     print("*")
+    print("* Number of frames found     : %d" % (len(result["Value"])))
+    print("*")
 
     # Get the cluster file names from the metadata query.
 
-    ## Kluster file names.
-    kluster_file_names = []
+#    ## Kluster file names.
+#    kluster_file_names = []
 
     for fn in sorted(result["Value"]):
-        print("* Found: '%s'." % (fn))
+        #print("* Found: '%s'." % (fn))
         filemetadata = fc.getFileUserMetadata(fn)
         frameid = str(filemetadata['Value']['frameid'])
         n_kluster = int(filemetadata['Value']['n_kluster'])
         print("*--> Frame ID           : '%s'" % (frameid))
         print("*--> Number of clusters = %d" % (n_kluster))
-        print("*")
-        for i in range(n_kluster):
-            kn = "%s_k%05d.png" % (frameid, i)
-            kluster_file_names.append(kn)
-    print("*")
-
-    lg.info(" * Clusters to be downloaded:")
-    for kn in kluster_names:
-        lg.info(" *--> '%s'" % (kn))
+        #print("*")
+#        for i in range(n_kluster):
+#            kn = "%s_k%05d.png" % (frameid, i)
+#            kluster_file_names.append(kn)
+#    print("*")
+#
+#    #lg.info(" * Clusters to be downloaded:")
+#    #for kn in kluster_names:
+#    #    lg.info(" *--> '%s'" % (kn))
+#
+#    print("* Number of clusters found   : %d" % (len(kluster_file_names)))

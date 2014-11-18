@@ -85,7 +85,7 @@ if __name__ == "__main__":
         level=lg.INFO
 
     # Configure the logging.
-    lg.basicConfig(filename='log_upload_frames.log', filemode='w', level=level)
+    lg.basicConfig(filename='log_get_clusters.log', filemode='w', level=level)
 
     print("*")
     print("* Input path          : '%s'" % (jsonpath))
@@ -158,11 +158,6 @@ if __name__ == "__main__":
     ## The DIRAC instance.
     dirac = Dirac()
 
-    # Submit the job and print the result.
-    result = dirac.submit(j)
-    print 'Submission result: ', result
-
-    # TODO!
-#    # Write out the frame information to a JSON file.
-#    with open("%s/%s.json" % (outputpath, dn), "w") as jf:
-#        json.dump(file_dict.values(), jf)
+#    # Submit the job and print the result.
+#    result = dirac.submit(j)
+#    print 'Submission result: ', result

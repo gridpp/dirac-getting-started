@@ -7,6 +7,7 @@ DIRAC and GridPP: perform a query on the CERN@school clusters.
 
 """
 
+#...for the operating system stuff.
 import os
 
 #...for parsing the arguments.
@@ -64,7 +65,7 @@ if __name__ == "__main__":
         level=lg.INFO
 
     # Configure the logging.
-    lg.basicConfig(filename='log_perform_frame_query.log', filemode='w', level=level)
+    lg.basicConfig(filename='log_perform_cluster_query.log', filemode='w', level=level)
 
     print("*")
     print("* Input JSON          : '%s'" % (datapath))
@@ -91,4 +92,5 @@ if __name__ == "__main__":
     print "* Metadata query:", meta_dict
     print("*")
 
-    print result
+    #print result
+    print("* Number of clusters found      : %d" % len(result["Value"]))

@@ -7,6 +7,7 @@ GridPP and DIRAC: adding CERN@school cluster metadata.
 
 """
 
+#...for operating system stuff.
 import os
 
 #...for parsing the arguments.
@@ -35,14 +36,14 @@ if __name__ == "__main__":
 
     # Get the datafile path from the command line.
     parser = argparse.ArgumentParser()
-    parser.add_argument("inputPath",       help="Path to the cluster dataset's JSON.")
+    parser.add_argument("jsonPath",        help="Path to the cluster dataset's JSON.")
     parser.add_argument("outputPath",      help="The path for the output files.")
     parser.add_argument("dfcBaseDir",      help="The name of the base directory on the DFC.")
     parser.add_argument("-v", "--verbose", help="Increase output verbosity", action="store_true")
     args = parser.parse_args()
 
     ## The path to the cluster JSON file.
-    datapath = args.inputPath
+    datapath = args.jsonPath
 
     ## The output path.
     outputpath = args.outputPath

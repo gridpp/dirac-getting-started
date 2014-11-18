@@ -7,6 +7,7 @@ GridPP and DIRAC: uploading CERN@school test data.
 
 """
 
+#... for operating system stuff.
 import os
 
 #...for parsing the arguments.
@@ -68,7 +69,7 @@ if __name__ == "__main__":
     jobnum = int(args.jobNum)
 
     ## The job name.
-    jobname = "CERNatschool-test_%05d" % (jobnum)
+    jobname = "CERNatschool-upload_frames_%05d" % (jobnum)
 
     ## The site name.
     sitename = args.siteName
@@ -200,9 +201,9 @@ if __name__ == "__main__":
     ## The DIRAC instance.
     dirac = Dirac()
 
-    # Submit the job and print the result.
-    result = dirac.submit(j)
-    print 'Submission result: ', result
+#    # Submit the job and print the result.
+#    result = dirac.submit(j)
+#    print 'Submission result: ', result
 
     # Delete the (temporary) data files.
     for fn in file_dict.keys():

@@ -7,6 +7,7 @@ GridPP and DIRAC: processing CERN@school test data on the grid.
 
 """
 
+#...for the operating system stuff.
 import os
 
 #...for parsing the arguments.
